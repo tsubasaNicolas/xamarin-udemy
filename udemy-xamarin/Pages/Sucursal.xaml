@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="udemy_xamarin.Pages.Sucursal">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarRegistrar" 
+                     Clicked="toolbarRegistrar_Clicked"
+                     Text="Registrar" Priority="1" Order="Secondary"/>
+
+        <ToolbarItem x:Name="toolbarVer" 
+                     Clicked="toolbarVer_Clicked"
+                     Text="Ver" Priority="0" Order="Secondary" />
+
+
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchSucursal" SearchButtonPressed="searchSucursal_SearchButtonPressed"/>
+            <ScrollView>
+                
+                <RefreshView x:Name="refreshSucursal" IsRefreshing="{Binding oSucursalModel.cargando}">
+                <CollectionView SelectionMode="Multiple" x:Name="collectionSucursal"
+                                SelectionChanged="collectionSucursal_SelectionChanged"
+                                ItemsSource="{Binding  oSucursalModel.listasucursal}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+
+
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.Header>
+                      
+                        <Label FontSize="16" TextColor="{StaticResource verde}" 
+                           HorizontalTextAlignment="Center" FontAttributes="Bold"
+                           Text="{Binding oSucursalModel.numeroregistro, StringFormat='El número de registros es : {0}'}"
+                           
+                           />
+                     
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                                <SwipeView>
+                                    
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems>
+                                            <SwipeItem x:Name="swipeEliminar" 
+                                                       Clicked="swipeEliminar_Clicked" 
+                                                       BackgroundColor="{StaticResource rojo}" IconImageSource="ic_trash_xam" />
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
+                                    
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem x:Name="swipeEditar" 
+                                                       Clicked="swipeEditar_Clicked" 
+                                                       BackgroundColor="{StaticResource verde}" 
+                                                       IconImageSource="ic_edit_xam"/>
+                                        </SwipeItems>
+                                        
+                                    </SwipeView.RightItems>
+                                    
+                            <Frame CornerRadius="10" BorderColor="Azure">
+                                
+                            <StackLayout>
+                                <Label Text="{Binding nombre}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding telefono}"/>
+                                <Label Text="{Binding email}"/>
+                            </StackLayout>
+                            </Frame>
+                                </SwipeView>
+                            
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                    <CollectionView.Footer>
+                        <StackLayout Padding="20">
+                            <Label TextColor="{StaticResource rojo }" 
+                                   Text="---------------------------------------------------------------------------------------"/>
+
+                            <Label TextColor="{StaticResource rojo }" HorizontalTextAlignment="Center"
+                                Text="{Binding oSucursalModel.filtroMensaje}"
+                                />
+
+                        </StackLayout>
+
+                    </CollectionView.Footer>
+                    
+                </CollectionView>
+                </RefreshView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

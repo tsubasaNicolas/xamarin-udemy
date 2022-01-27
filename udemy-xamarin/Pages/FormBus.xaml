@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding tituloForm}"
+             x:Class="udemy_xamarin.Pages.FormBus">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <RefreshView x:Name="refreshSucursal" IsRefreshing="{Binding oBusModel.cargando}">
+                    <Grid ColumnDefinitions="*,2*"
+                  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                        <Label Text="Formulario Bus" Grid.ColumnSpan="2" Style="{StaticResource estiloLabel}"/>
+
+                        <Label Text="Sucursal" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                        <Picker  Grid.Column="1" SelectedItem="{Binding oBusModel.oBusCLS.nombresucursal}" 
+                             Grid.Row="1" ItemsSource="{Binding oBusModel.listaSucursal}">
+
+                        </Picker>
+
+                        <Label Text="Tipo Bus" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                        <Picker  Grid.Column="1" SelectedItem="{Binding oBusModel.oBusCLS.nombretipobus}" 
+                             Grid.Row="2" ItemsSource="{Binding oBusModel.listaTipoBus}">
+
+                        </Picker>
+
+                        <Label Text="Placa" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"/>
+                        <Entry Keyboard="Text"  Grid.Column="1" Grid.Row="3"
+                            Text="{Binding oBusModel.oBusCLS.placa}"/>
+
+                        <Label Text="Fecha Compra" Grid.Column="0" Grid.Row="4" VerticalOptions="Center"/>
+                        <DatePicker  Grid.Column="1" Grid.Row="4" Format="dd/MM/yyyy" Date="{Binding oBusModel.oBusCLS.fechacompra}"/>
+
+                        <Label Text="Modelo" Grid.Column="0" Grid.Row="5" VerticalOptions="Center"/>
+                        <Picker  Grid.Column="1" SelectedItem="{Binding oBusModel.oBusCLS.nombremodelo}"
+                             Grid.Row="5" ItemsSource="{Binding oBusModel.listaModelo}">
+
+                        </Picker>
+
+                        <Label Text="N° Fila" Grid.Column="0" Grid.Row="6" VerticalOptions="Center"/>
+                        <Entry Keyboard="Numeric"  Grid.Column="1" Grid.Row="6"
+                            Text="{Binding oBusModel.oBusCLS.numerofila}"/>
+
+                        <Label Text="N° Columna" Grid.Column="0" Grid.Row="7" VerticalOptions="Center"/>
+                        <Entry Keyboard="Numeric"  Grid.Column="1" Grid.Row="7"
+                           Text="{Binding oBusModel.oBusCLS.numerocolumna}"/>
+
+                        <Label Text="Descripción" Grid.Column="0" Grid.Row="8" VerticalOptions="Center"/>
+                        <Editor Grid.Column="1" Grid.Row="8" HeightRequest="100"
+                             Text="{Binding oBusModel.oBusCLS.descripcion}"/>
+
+
+                        <Label Text="Observación" Grid.Column="0" Grid.Row="9" VerticalOptions="Center"/>
+                        <Editor Grid.Column="1" Grid.Row="9" HeightRequest="100"
+                             Text="{Binding oBusModel.oBusCLS.observacion}"/>
+
+                        <Label Text="Marca" Grid.Column="0" Grid.Row="10" VerticalOptions="Center"/>
+                        <Picker  Grid.Column="1" SelectedItem="{Binding oBusModel.oBusCLS.nombremarca}" 
+                             Grid.Row="10" ItemsSource="{Binding oBusModel.listaMarca}">
+
+                        </Picker>
+
+
+
+                        <StackLayout Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="btnAceptar" Clicked="btnAceptar_Clicked" 
+                                Text="Aceptar" Style="{StaticResource colorAzul}"/>
+
+                            <Button  x:Name="btnRegresar" Clicked="btnRegresar_Clicked" 
+                             Text="Regresar" Style="{StaticResource colorRojo}"/>
+
+                        </StackLayout>
+
+
+                    </Grid>
+                </RefreshView>
+            </ScrollView>
+                
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

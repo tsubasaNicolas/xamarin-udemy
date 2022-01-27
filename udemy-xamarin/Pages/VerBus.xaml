@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Ver Bus"
+             x:Class="udemy_xamarin.Pages.VerBus">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <RefreshView IsRefreshing="{Binding oBusModel.cargando}">
+                    
+                <CollectionView ItemsSource="{Binding oBusModel.listabus}">
+
+                    <CollectionView.Header>
+                        <Label FontSize="16" TextColor="{StaticResource verde}" 
+                           HorizontalTextAlignment="Center" FontAttributes="Bold"
+                           Text="{Binding oBusModel.numeroregistro, StringFormat='Número de registros recuperados : {0}'}"
+                           
+                           />
+                    </CollectionView.Header>
+                    
+                    
+                    <CollectionView.ItemsLayout>
+
+                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" Span="2" HorizontalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame>
+                                <StackLayout>
+                                    <Label Text="{Binding iidbus, StringFormat='Id Bus: {0}'}" />
+                                    <Label Text="{Binding nombremarca, StringFormat='Marca: {0}'}" />
+                                    <Label Text="{Binding nombretipobus, StringFormat='Tipo Bus: {0}'}" />
+                                    <Label Text="{Binding nombremodelo, StringFormat='Modelo: {0}'}" />
+                                    <Label Text="{Binding nombresucursal, StringFormat='Sucursal: {0}'}" />
+                                    <Label Text="{Binding placa, StringFormat='Placa :{0}'}" />
+                                    <Label Text="{Binding fechacompra, StringFormat='Fecha Compra: {0:dd/MM/yyyy}'}" />
+                                    <Label Text="{Binding numerofila, StringFormat='N° de Fila: {0}'}" />
+                                    <Label Text="{Binding numerocolumna, StringFormat='N° de Columna: {0}'}" />
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+                </RefreshView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

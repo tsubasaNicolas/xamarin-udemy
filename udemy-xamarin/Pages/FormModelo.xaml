@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding tituloForm}"
+             x:Class="udemy_xamarin.Pages.FormModelo">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto,Auto,Auto,Auto">
+                <Label Text="Formulario Modelo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Style="{StaticResource estiloLabel}"
+                       />
+                <Label Text="Nombre" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="1" Keyboard="Text"/>
+                <Entry Grid.Column="1" Grid.Row="2" Keyboard="Text"/>
+
+                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Button Text="Aceptar" Style="{StaticResource colorAzul}"/>
+
+                    <Button x:Name="btnRegresar" Clicked="btnRegresar_Clicked" Text="Regresar" Style="{StaticResource colorRojo}"/>
+
+                </StackLayout>
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

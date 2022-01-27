@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="udemy_xamarin.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="verde">#198754</Color>
+            <Color x:Key="rojo">#dc3545</Color>
+            
+            <Style x:Key="estiloLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="Tomato"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="colorBlanco" TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style BasedOn="{StaticResource colorBlanco}" x:Key="colorVerde" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#198754"/>
+                
+            </Style>
+
+            <Style BasedOn="{StaticResource colorBlanco}" x:Key="colorAzul" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#0d6efd"/>
+               
+            </Style>
+
+            <Style BasedOn="{StaticResource colorBlanco}" x:Key="colorRojo" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#dc3545"/>
+               
+            </Style>
+
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="Padding" Value="10"/>
+
+            </Style>
+
+
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

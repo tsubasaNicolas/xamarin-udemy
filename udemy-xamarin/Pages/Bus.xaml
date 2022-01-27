@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="udemy_xamarin.Pages.Bus">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarVer" Text="Ver" Clicked="toolbarVer_Clicked"/>
+
+        <ToolbarItem x:Name="toolbarNuevo" Text="Nuevo" Clicked="toolbarNuevo_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Seleccione Tipo Bus"/>
+            <Picker
+                ItemsSource="{Binding oBusModel.listaTipoBus}"
+                />
+            <ScrollView>
+                
+            <RefreshView>
+                
+            <CollectionView SelectionMode="None" ItemsSource="{Binding oBusModel.listabus}">
+                        <CollectionView.Header>
+
+                            <Label FontSize="16" TextColor="{StaticResource verde}" 
+                           HorizontalTextAlignment="Center" FontAttributes="Bold"
+                           Text="{Binding oBusModel.numeroregistro, StringFormat='El número de registros es : {0}'}"
+                           
+                           />
+
+                        </CollectionView.Header>
+                
+                        <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="5" HorizontalItemSpacing="5" />
+
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White">
+                            <StackLayout>
+                                <CheckBox x:Name="chkMarcado" CheckedChanged="chkMarcado_CheckedChanged" 
+                                          IsChecked="{Binding isMarcado}"/>
+                                <Label Text="{Binding placa, StringFormat='Placa :{0}'}" />
+                                <Label Text="{Binding nombremarca, StringFormat='Marca :{0}'}" />
+                                <Label Text="{Binding nombretipobus, StringFormat='Tipo Bus :{0}'}" />
+                                <Label Text="{Binding nombremodelo, StringFormat='Modelo :{0}'}" />
+                                <Label Text="{Binding sucursal, StringFormat='Sucursal :{0}'}" />
+
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Button Text="Editar" WidthRequest="80" x:Name="btnEditar" 
+                                            Clicked="btnEditar_Clicked" Style="{StaticResource colorVerde}" />
+                                    <Button Text="Eliminar"  x:Name="btnEliminar" 
+                                            Clicked="btnEliminar_Clicked" Style="{StaticResource colorRojo}" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                        <CollectionView.Footer>
+                            <StackLayout Padding="20">
+                                <Label TextColor="{StaticResource rojo }" 
+                                   Text="---------------------------------------------------------------------------------------"/>
+
+                                <Label TextColor="{StaticResource rojo }" HorizontalTextAlignment="Center"
+                                Text="{Binding oBusModel.filtroMensaje}"
+                                />
+
+                            </StackLayout>
+
+                        </CollectionView.Footer>
+
+                    </CollectionView>
+            </RefreshView>
+            
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

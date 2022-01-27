@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding tituloForm}"
+             x:Class="udemy_xamarin.Pages.FormMarca">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto,Auto,Auto,Auto">
+                <Label Text="Formulario Marca" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Style="{StaticResource estiloLabel}"
+                       />
+                <Label Text="Nombre" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+
+                <Entry Text="{Binding oMarcaModel.oMarcaCLS.nombre}" Grid.Column="1" Grid.Row="1" Keyboard="Text"/>
+                <Editor  Text="{Binding oMarcaModel.oMarcaCLS.descripcion}" HeightRequest="100" Grid.Column="1" Grid.Row="2" Keyboard="Text"/>
+
+                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Horizontal">
+                    <Button Text="Aceptar" x:Name="btnAceptar"
+                            Clicked="btnAceptar_Clicked"
+                            Style="{StaticResource colorAzul}"/>
+
+                    <Button Text="Regresar" x:Name="btnRegresar" Clicked="btnRegresar_Clicked" Style="{StaticResource colorRojo}"/>
+
+                </StackLayout>
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

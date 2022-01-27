@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="udemy_xamarin.Pages.Marca">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarRegistrar" IconImageSource="icon_add_xam.png" Clicked="toolbarRegistrar_Clicked" />
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchNombre" TextChanged="searchNombre_TextChanged" Text="{Binding valor}"/>
+            <ScrollView>
+                <RefreshView x:Name="refreshMarca" IsRefreshing="{Binding oMarcaModel.cargando}">
+                    <CollectionView  x:Name="collectionMarca"
+                             SelectionChanged="collectionMarca_SelectionChanged" 
+                SelectionMode="Single" ItemsSource="{Binding oMarcaModel.listamarca}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        
+                        <CollectionView.Header>
+                            <Label FontSize="16" TextColor="{StaticResource verde}" 
+                           HorizontalTextAlignment="Center" FontAttributes="Bold"
+                           Text="{Binding oMarcaModel.numeroregistro, StringFormat='El número de registros es : {0}'}"
+                           
+                           />
+                        </CollectionView.Header>
+                        
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems>
+                                            <SwipeItem BackgroundColor="{StaticResource rojo}" Text="Eliminar"
+                                                   x:Name="swipeEliminar" Clicked="swipeEliminar_Clicked">
+
+                                            </SwipeItem>
+
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
+                                    <Grid RowDefinitions="Auto,Auto,Auto">
+                                        <Label Text="{Binding nombre}" Grid.Row="0" FontAttributes="Bold" FontSize="15" TextTransform="Uppercase"/>
+                                        <Label Text="{Binding descripcion}" Grid.Row="1"/>
+                                     <!--   <BoxView HeightRequest="1"  Grid.Row="2" BackgroundColor="Black" /> -->
+
+                                    </Grid>
+                                </SwipeView>
+
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.Footer>
+                            <StackLayout Padding="20">
+                                <Label TextColor="{StaticResource rojo }" 
+                                   Text="---------------------------------------------------------------------------------------"/>
+
+                                <Label TextColor="{StaticResource rojo }" HorizontalTextAlignment="Center"
+                                Text="{Binding oMarcaModel.filtroMensaje}"
+                                />
+
+                            </StackLayout>
+                        </CollectionView.Footer>
+
+                    </CollectionView>
+                </RefreshView>
+             
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

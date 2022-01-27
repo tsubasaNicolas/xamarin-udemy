@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding titulobarra}"
+             x:Class="udemy_xamarin.Pages.VerSucursal">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ScrollView>
+                
+            
+            <CollectionView ItemsSource="{Binding listasucursal}">
+
+                    <CollectionView.Header>
+
+                        <Label FontSize="16" TextColor="{StaticResource verde}" 
+                           HorizontalTextAlignment="Center" FontAttributes="Bold"
+                           Text="{Binding numeroregistro, StringFormat='El número de registros seleccionados es : {0}'}"
+                           
+                           />
+
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                
+                    <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <StackLayout>
+                                
+                            <Label Text="{Binding iidsucursal, StringFormat='Id Sucursal: {0}'}" />
+                            <Label Text="{Binding nombre, StringFormat='Nombre: {0}'}" />
+                                <Label Text="{Binding direccion, StringFormat='Direccion: {0}'}" />
+                                <Label Text="{Binding telefono, StringFormat='Telefono: {0}'}" />
+                                <Label Text="{Binding email, StringFormat='Email: {0}'}" />
+                                <Label Text="{Binding fechaapertura, StringFormat='Fecha Apertura: {0:dd/MM/yyyy}'}" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Menu"
+             x:Class="udemy_xamarin.Pages.Menu">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <CollectionView ItemsSource="{Binding oMenuModel.listamenu}" SelectionMode="Single" 
+                            SelectionChanged="collectionMenu_SelectionChanged" x:Name="collectionMenu">
+              
+                <CollectionView.ItemTemplate>
+                  
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                            <Image Source="{Binding nombreicono}" WidthRequest="50" HeightRequest="50"/>
+                            <Label Text="{Binding nombrepagina}" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                            
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.Footer>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="stackSalir" Tapped="stackSalir_Tapped" />
+                        </StackLayout.GestureRecognizers>
+
+
+                        <Image Source="ic_close" WidthRequest="50" HeightRequest="50" />
+                        <Label Text="Cerrar Sesión" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </CollectionView.Footer>
+                
+                
+            </CollectionView>
+         
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
