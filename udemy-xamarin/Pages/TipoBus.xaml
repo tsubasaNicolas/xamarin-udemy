@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="udemy_xamarin.Pages.TipoBus">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="toolbarRegistrar" IconImageSource="icon_add_xam.png" 
+                     Clicked="toolbarRegistrar_Clicked" Priority="2" />
+
+
+        <ToolbarItem x:Name="toolbarEliminar" IconImageSource="ic_trash_xam.png" 
+                     Clicked="toolbarEliminar_Clicked"  Priority="0"/>
+
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <StackLayout>
+                    <Label Text="{Binding oTipoBusModel.titulo}" Style="{StaticResource estiloLabel}"/>
+                    <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto,Auto,Auto,Auto">
+
+                        <Label Text="Nombre" Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center"/>
+                        <Entry Text="{Binding oTipoBusModel.oTipoBusCLS.nombre}"  Grid.Column="1" Grid.Row="1"/>
+                        <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalTextAlignment="Center"/>
+                        <Editor Text="{Binding oTipoBusModel.oTipoBusCLS.descripcion}"  Grid.Column="1" Grid.Row="2" HeightRequest="100"/>
+                        <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
+                            <Button x:Name="btnGuardar" Clicked="btnGuardar_Clicked" Text="Guardar"
+                                Style="{StaticResource colorAzul}"/>
+                            <Button x:Name="btnCancelar" Clicked="btnCancelar_Clicked" Text="Cancelar" 
+                                Style="{StaticResource colorRojo}"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <ScrollView>
+                        <RefreshView x:Name="refreshTipoBus" IsRefreshing="{Binding oTipoBusModel.cargando}">
+                            <CollectionView SelectionMode="Single" HeightRequest="200" 
+                                            SelectionChanged="CollectionView_SelectionChanged"
+                                            SelectedItem="{Binding oTipoBusModel.oTipoBusCLS}"
+                                            ItemsSource="{Binding oTipoBusModel.listatipobus}">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Horizontal" HorizontalItemSpacing="10"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnDefinitions="0.5*">
+                                            <StackLayout WidthRequest="150" Padding="10">
+                                                <Label Text="{Binding nombre, StringFormat= 'Nombre: {0}'}"/>
+                                                <Label Text="{Binding descripcion, StringFormat= 'Descripcion: {0}'}"/>
+                                            </StackLayout>
+                                        </Grid>
+                                        
+                                    </DataTemplate>
+                                    
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </RefreshView>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

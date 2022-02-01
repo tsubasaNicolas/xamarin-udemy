@@ -20,6 +20,7 @@ public partial class Sucursal : ContentPage
         public static Sucursal instance;
         private List<SucursalCLS> lista;
         private List<SucursalCLS> elementosSeleccionados;
+        private string urlSucursal;
         public static Sucursal getInstance()
         {
             if (instance == null) return new Sucursal();
@@ -31,6 +32,7 @@ public partial class Sucursal : ContentPage
 
         public Sucursal()
     {
+            urlSucursal = GenericLH.getValueKey("GetSucursal");
             instance = this;
             oSucursalModel.listasucursal = new List<SucursalCLS>();
             InitializeComponent();
@@ -45,7 +47,7 @@ public partial class Sucursal : ContentPage
         {
             oSucursalModel.cargando = true;
             oSucursalModel.listasucursal =
-            await GenericLH.GetAll<SucursalCLS>("http://nicolascarrasco-001-site1.dtempurl.com/api/Sucursal");
+            await GenericLH.GetAll<SucursalCLS>(urlSucursal);
             oSucursalModel.cargando = false;
             lista = oSucursalModel.listasucursal;
             oSucursalModel.numeroregistro = lista.Count;
@@ -76,7 +78,7 @@ public partial class Sucursal : ContentPage
             int iidsucursal = oSucursalCLS.iidsucursal;
             string opcion = await DisplayActionSheet("Desea guardar los datos?", "Cancelar", null, "Sí", "No");
             if (opcion == "No") return;
-           int rpta= await GenericLH.Delete("http://nicolascarrasco-001-site1.dtempurl.com/api/Sucursal/" + iidsucursal);
+           int rpta= await GenericLH.Delete(urlSucursal+"/" + iidsucursal);
             if (rpta == 1) listarSucursal();
             else await DisplayAlert("Error", "Ocurrió un error", "Cancelar");
         }

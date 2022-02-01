@@ -15,6 +15,7 @@ public partial class Marca : ContentPage
 {
 		//  public List<MarcaCLS> listamarca { get; set; }
 		public static Marca instance;
+		private string urlMarca;
 		public static Marca getInstance()
         {
 			if (instance == null) return new Marca();
@@ -28,6 +29,7 @@ public partial class Marca : ContentPage
 		private List<MarcaCLS> lista;
 		public Marca()
     {
+			urlMarca = GenericLH.getValueKey("GetMarca");
 			instance = this;
 
 			oMarcaModel.listamarca = new List<MarcaCLS>();
@@ -45,9 +47,10 @@ public partial class Marca : ContentPage
 		}
 		public async void listarMarca()
         {
+			//string urlMarca = App.Current.Resources["GetMarca"].ToString();
 			oMarcaModel.cargando = true;
 			oMarcaModel.listamarca =
-				await GenericLH.GetAll<MarcaCLS>("http://nicolascarrasco-001-site1.dtempurl.com/api/Marca");
+				await GenericLH.GetAll<MarcaCLS>(urlMarca);
 			oMarcaModel.cargando = false;
 			lista = oMarcaModel.listamarca;
 			oMarcaModel.numeroregistro = lista.Count;
@@ -88,7 +91,7 @@ public partial class Marca : ContentPage
 			SwipeItem oSwipeItem = sender as SwipeItem;
 			MarcaCLS oMarcaCLS = oSwipeItem.BindingContext as MarcaCLS;
 			int iidmarca = oMarcaCLS.idmarca;
-			int rpta =  await GenericLH.Delete("http://nicolascarrasco-001-site1.dtempurl.com/api/Marca/" + iidmarca);
+			int rpta =  await GenericLH.Delete(urlMarca+"/" + iidmarca);
 			if(rpta ==0)
             {
 				listarMarca();

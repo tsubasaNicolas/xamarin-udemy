@@ -14,6 +14,7 @@ namespace udemy_xamarin.Pages
 public partial class FormMarca : ContentPage
 {
         public string tituloForm { get; set; }
+        private string urlMarca;
 
         public MarcaModel oMarcaModel { get; set; } = new MarcaModel();
 
@@ -22,6 +23,7 @@ public partial class FormMarca : ContentPage
         public FormMarca(string titulo, MarcaCLS obj)
     {
         InitializeComponent();
+            urlMarca = GenericLH.getValueKey("GetMarca");
             tituloForm = titulo;
            
             BindingContext = this;
@@ -39,7 +41,7 @@ public partial class FormMarca : ContentPage
             if (opcion == "No") return;
 
             int rpta = await GenericLH.Post<MarcaCLS>
-                ("http://nicolascarrasco-001-site1.dtempurl.com/api/marca", oMarcaModel.oMarcaCLS);
+                (urlMarca, oMarcaModel.oMarcaCLS);
             if(rpta == 1)
             {
              // await  DisplayAlert("Ok", "Se guardó correctamente", "Cancelar");

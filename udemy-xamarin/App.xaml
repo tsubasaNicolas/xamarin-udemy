@@ -4,7 +4,13 @@
              x:Class="udemy_xamarin.App">
     <Application.Resources>
         <ResourceDictionary>
-
+            <x:String x:Key="GetBus">http://nicolascarrasco-001-site1.dtempurl.com/api/Bus</x:String>
+            <x:String x:Key="GetTipoBus">http://nicolascarrasco-001-site1.dtempurl.com/api/TipoBus</x:String>
+            <x:String x:Key="GetEmpleado">http://nicolascarrasco-001-site1.dtempurl.com/api/Empleado</x:String>
+            <x:String x:Key="GetMarca">http://nicolascarrasco-001-site1.dtempurl.com/api/Marca</x:String>
+            <x:String x:Key="GetSucursal">http://nicolascarrasco-001-site1.dtempurl.com/api/Sucursal</x:String>
+            <x:String x:Key="GetModelo">http://nicolascarrasco-001-site1.dtempurl.com/api/Modelo</x:String>
+            <x:String x:Key="GetModalidadContrato">http://nicolascarrasco-001-site1.dtempurl.com/api/ModalidadContrato</x:String>
             <Color x:Key="verde">#198754</Color>
             <Color x:Key="rojo">#dc3545</Color>
             

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0179e632-cabf-40d0-9ba9-7c38d9587a83": {
+      "ProjectGuid": "0179e632-cabf-40d0-9ba9-7c38d9587a83",
+      "DisplayName": "udemy-xamarin",
+      "ColorIndex": 0
+    },
+    "dcdcb6e4-5d59-4293-9638-42b470e296cd": {
+      "ProjectGuid": "dcdcb6e4-5d59-4293-9638-42b470e296cd",
+      "DisplayName": "udemy-xamarin.Android",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

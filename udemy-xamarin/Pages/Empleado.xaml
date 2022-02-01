@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="udemy_xamarin.Pages.Empleado">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchBusqueda" Text="{Binding oEmpleadoModel.texto}" 
+                       TextChanged="searchBusqueda_TextChanged"/>
+            <AbsoluteLayout>
+                
+
+                <ScrollView AbsoluteLayout.LayoutFlags="SizeProportional" 
+                                 AbsoluteLayout.LayoutBounds="0,0,1,1">
+         
+                
+                    <RefreshView IsRefreshing="{Binding  oEmpleadoModel.cargando}">
+                        <CollectionView SelectionMode="Single"
+                                    x:Name="collectionEmpleado"
+                                    SelectedItem="{Binding  oEmpleadoModel.oEmpleadoCLS}"
+                                    SelectionChanged="collectionEmpleado_SelectionChanged"
+                                    ItemsSource="{Binding oEmpleadoModel.listaempleadoagrupada}" IsGrouped="True">
+                            <CollectionView.GroupHeaderTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="{StaticResource verde}" Padding="10">
+                                        <Label Text="{Binding nombreGrupo}" TextColor="white" FontSize="15" FontAttributes="Bold"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.GroupHeaderTemplate>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding nombrecompleto}" FontSize="15" Padding="10"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            <CollectionView.GroupFooterTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding Count , StringFormat='Total Empleados {0}'}" TextColor="{StaticResource rojo}" FontAttributes="Bold" Margin="10"/>
+                                </DataTemplate>
+                            </CollectionView.GroupFooterTemplate>
+
+                        </CollectionView>
+
+                    </RefreshView>
+
+               
+                </ScrollView>
+                <ImageButton Source="icon_add_xam" AbsoluteLayout.LayoutFlags="PositionProportional" 
+                                 AbsoluteLayout.LayoutBounds=".95,.95,50,50"
+                             CornerRadius="20"
+                             x:Name="imagenNuevo"
+                             Clicked="imagenNuevo_Clicked"
+                             BackgroundColor="Green"/>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

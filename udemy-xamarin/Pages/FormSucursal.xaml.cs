@@ -17,8 +17,10 @@ public partial class FormSucursal : ContentPage
         public string tituloForm { get; set; }
 
         public SucursalModel oSucursalModel { get; set; } = new SucursalModel();
-    public FormSucursal(string titulo, SucursalCLS oSucursalCLS)
+        private string urlSucursal;
+        public FormSucursal(string titulo, SucursalCLS oSucursalCLS)
     {
+            urlSucursal = GenericLH.getValueKey("GetSucursal");
             InitializeComponent();
             tituloForm = titulo;
             oSucursalModel.oSucursalCLS = oSucursalCLS;
@@ -35,7 +37,7 @@ public partial class FormSucursal : ContentPage
            string opcion = await DisplayActionSheet("Desea guardar los datos?", "Cancelar", null, "Sí", "No");
             if (opcion == "No") return;
 
-            int rpta = await GenericLH.Post<SucursalCLS>("http://nicolascarrasco-001-site1.dtempurl.com/api/Sucursal", oSucursalModel.oSucursalCLS);
+            int rpta = await GenericLH.Post<SucursalCLS>(urlSucursal, oSucursalModel.oSucursalCLS);
             if (rpta == 1)
             {
                 // await  DisplayAlert("Ok", "Se guardó correctamente", "Cancelar");

@@ -71,11 +71,20 @@ namespace udemy_xamarin.Models
             set { SetValue(ref _numeroregistro, value); }
         }
 
+       
+
         private string _filtroMensaje;
         public string filtroMensaje
         {
             get { return _filtroMensaje; }
             set { SetValue(ref _filtroMensaje, value); }
+        }
+
+        private string _itemSeleccionado;
+        public string itemSeleccionado
+        {
+            get { return _itemSeleccionado; }
+            set { SetValue(ref _itemSeleccionado, value); }
         }
 
         private bool _cargando;

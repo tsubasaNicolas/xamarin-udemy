@@ -70,6 +70,10 @@ namespace udemy_xamarin.Generic
 
 
 		}
+		public static string getValueKey(string Key)
+        {
+			return App.Current.Resources[Key].ToString();
+		}
 
 	}
 }

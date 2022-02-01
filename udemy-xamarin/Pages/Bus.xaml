@@ -13,6 +13,9 @@
         <StackLayout>
             <Label Text="Seleccione Tipo Bus"/>
             <Picker
+                x:Name="pickerTipoBus"
+                SelectedIndexChanged="pickerTipoBus_SelectedIndexChanged"
+                SelectedItem="{Binding  oBusModel.itemSeleccionado}"
                 ItemsSource="{Binding oBusModel.listaTipoBus}"
                 />
             <ScrollView>

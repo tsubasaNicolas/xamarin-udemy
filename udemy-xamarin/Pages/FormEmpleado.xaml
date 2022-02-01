@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding tituloForm}"
+             x:Class="udemy_xamarin.Pages.FormEmpleado">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nombre"/>
+            <Entry Text="{Binding oEmpleadoModel.oEmpleadoCLS.nombre}"/>
+            <Label Text="Apellido Paterno"/>
+            <Entry Text="{Binding oEmpleadoModel.oEmpleadoCLS.appaterno}"/>
+            <Label Text="Apellido Materno"/>
+            <Entry Text="{Binding oEmpleadoModel.oEmpleadoCLS.apmaterno}"/>
+            <Label Text="Modalidad Contrato"/>
+            <Picker 
+                SelectedItem="{Binding oEmpleadoModel.oEmpleadoCLS.nombretipocontrato }"
+                ItemsSource="{Binding oEmpleadoModel.listaTipoContrato}"
+                />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="btnAceptar" Clicked="btnAceptar_Clicked" 
+                                Text="Aceptar" Style="{StaticResource colorAzul}"/>
+
+                <Button  x:Name="btnRegresar" Clicked="btnRegresar_Clicked" 
+                             Text="Regresar" Style="{StaticResource colorRojo}"/>
+
+            </StackLayout>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

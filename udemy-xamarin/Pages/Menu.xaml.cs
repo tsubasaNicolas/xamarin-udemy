@@ -38,6 +38,24 @@ public partial class Menu : ContentPage
                 nombreicono = "ic_modelo", 
                 nombreformulario = "Modelo" });
 
+            oMenuModel.listamenu.Add(new MenuCLS
+            {
+                iidpagina = 5,
+                nombrepagina = "TipoBus",
+                nombreicono = "ic_tipobus",
+                nombreformulario = "TipoBus"
+            });
+
+
+            oMenuModel.listamenu.Add(new MenuCLS
+            {
+                iidpagina = 6,
+                nombrepagina = "Empleado",
+                nombreicono = "ic_empleado",
+                nombreformulario = "Empleado"
+            });
+
+
             BindingContext = this;
             InitializeComponent();
     }

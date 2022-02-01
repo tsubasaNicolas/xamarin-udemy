@@ -15,6 +15,8 @@ namespace udemy_xamarin.Pages
 public partial class Bus : ContentPage
 {
         public static Bus instance;
+        private string urlBus;
+        private string urlTipoBus;
         private List<BusCLS> lista;
         public static Bus getInstance()
         {
@@ -25,26 +27,34 @@ public partial class Bus : ContentPage
         public BusModel oBusModel { get; set; } = new BusModel();
         public Bus()
     {
+            urlBus = GenericLH.getValueKey("GetBus");
+            urlTipoBus = GenericLH.getValueKey("GetTipoBus");
             instance = this;
             InitializeComponent();
             oBusModel.listabus = new List<BusCLS>();
             BindingContext = this;
-            listarBus();
-            listarFiltro();
+            listarListas();
+           // listarFiltro();
     }
-        private async void listarFiltro()
-        {
-         List<TipoBusCLS> listatipobus=   await GenericLH.GetAll<TipoBusCLS>("http://nicolascarrasco-001-site1.dtempurl.com/api/TipoBus");
-            oBusModel.listaTipoBus = listatipobus.Select(p => p.nombre).ToList();
-        }
-        public async void listarBus()
+      //  private async void listarFiltro()
+      //{
+      // List<TipoBusCLS> listatipobus=   await GenericLH.GetAll<TipoBusCLS>("http://nicolascarrasco-001-site1.dtempurl.com/api/TipoBus");
+      //    listatipobus.Insert(0, new TipoBusCLS { iidtipobus = 0, nombre = "--Todos--" });
+         // oBusModel.listaTipoBus = listatipobus.Select(p => p.nombre).ToList();
+         // oBusModel.itemSeleccionado = "--Todos--";
+     // }
+        public async void listarListas()
         {
             oBusModel.cargando = true;
-            oBusModel.listabus = await GenericLH.GetAll<BusCLS>("http://nicolascarrasco-001-site1.dtempurl.com/api/Bus");
+            oBusModel.listabus = await GenericLH.GetAll<BusCLS>(urlBus);
             oBusModel.cargando = false;
             lista = oBusModel.listabus;
             oBusModel.numeroregistro = lista.Count;
             oBusModel.filtroMensaje = "Se muestra todos los registros";
+            List<TipoBusCLS> listatipobus = await GenericLH.GetAll<TipoBusCLS>(urlTipoBus);
+            listatipobus.Insert(0, new TipoBusCLS { iidtipobus = 0, nombre = "--Todos--" });
+            oBusModel.listaTipoBus = listatipobus.Select(p => p.nombre).ToList();
+            oBusModel.itemSeleccionado = "--Todos--";
         }
 
         private void toolbarVer_Clicked(object sender, EventArgs e)
@@ -104,11 +114,11 @@ public partial class Bus : ContentPage
             Button oButton = sender as Button;
             BusCLS oBusCLS = oButton.BindingContext as BusCLS;
             int iidbus = oBusCLS.iidbus;
-           int rpta = await GenericLH.Delete("http://nicolascarrasco-001-site1.dtempurl.com/api/Bus/" + iidbus);
+            int rpta = await GenericLH.Delete(urlBus+"/" + iidbus);
             if (rpta == 1)
             {
                 await  DisplayAlert("Exito", "Se eliminó correctamente", "Cancelar");
-                Bus.getInstance().listarBus();
+                Bus.getInstance().listarListas();
                 //await Navigation.PopAsync();
 
             }
@@ -116,6 +126,26 @@ public partial class Bus : ContentPage
             {
                 await DisplayAlert("Error", "Ocurrió un error", "Cancelar");
             }
+
+        }
+
+        private void pickerTipoBus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcionSeleccionado = oBusModel.itemSeleccionado;
+            // DisplayAlert("Exito", opcionSeleccionado, "Cancelar");
+            if (opcionSeleccionado != "--Todos--")
+            {
+                List<BusCLS> listaFiltrada = lista.Where(p => p.nombretipobus == opcionSeleccionado).ToList();
+                oBusModel.listabus = listaFiltrada;
+
+            }
+            else
+            {
+                oBusModel.listabus = lista;
+                oBusModel.filtroMensaje = "Se realizó el filtro por el campo nombre tipo bus que sea igual a "+opcionSeleccionado;
+            }
+            oBusModel.numeroregistro = oBusModel.listabus.Count;
+            oBusModel.filtroMensaje = "Se muestra todos los registros";
 
         }
     }

@@ -9,5 +9,9 @@ namespace udemy_xamarin.Entidades
         public int iidtipobus { get; set; }
 
         public string nombre { get; set; }
+
+        public string descripcion { get; set; }
+
 }
+
 }

@@ -76,7 +76,7 @@ public partial class FormBus : ContentPage
             if (opcion == "No") return;
 
             oBusModel.oBusCLS.iidmarca = oBusPickerCLS.listaMarca.Where(p => p.nombre == oBusModel.oBusCLS.nombremarca).First().idmarca;
-                oBusModel.oBusCLS.iidsucursal= oBusPickerCLS.listaSucursal.Where(p => p.nombre == oBusModel.oBusCLS.nombresucursal).First().iidsucursal;
+            oBusModel.oBusCLS.iidsucursal= oBusPickerCLS.listaSucursal.Where(p => p.nombre == oBusModel.oBusCLS.nombresucursal).First().iidsucursal;
             oBusModel.oBusCLS.iidmodelo= oBusPickerCLS.listaModelo.Where(p => p.nombre == oBusModel.oBusCLS.nombremodelo).First().iidmodelo;
             oBusModel.oBusCLS.iidtipobus= oBusPickerCLS.listaTipoBus.Where(p => p.nombre == oBusModel.oBusCLS.nombretipobus).First().iidtipobus;
 
@@ -85,7 +85,7 @@ public partial class FormBus : ContentPage
             if (rpta == 1)
             {
                 // await  DisplayAlert("Ok", "Se guardó correctamente", "Cancelar");
-                Bus.getInstance().listarBus();
+                Bus.getInstance().listarListas();
                 await Navigation.PopAsync();
 
             }

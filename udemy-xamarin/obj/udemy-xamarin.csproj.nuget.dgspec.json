@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\udemy-xamarin\\udemy-xamarin\\udemy-xamarin.csproj": {}
+    "C:\\xamarin\\xamarin-udemy\\udemy-xamarin\\udemy-xamarin.csproj": {}
   },
   "projects": {
-    "C:\\udemy-xamarin\\udemy-xamarin\\udemy-xamarin.csproj": {
+    "C:\\xamarin\\xamarin-udemy\\udemy-xamarin\\udemy-xamarin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\udemy-xamarin\\udemy-xamarin\\udemy-xamarin.csproj",
+        "projectUniqueName": "C:\\xamarin\\xamarin-udemy\\udemy-xamarin\\udemy-xamarin.csproj",
         "projectName": "udemy-xamarin",
-        "projectPath": "C:\\udemy-xamarin\\udemy-xamarin\\udemy-xamarin.csproj",
-        "packagesPath": "C:\\Users\\Nicolás Carrasco\\.nuget\\packages\\",
-        "outputPath": "C:\\udemy-xamarin\\udemy-xamarin\\obj\\",
+        "projectPath": "C:\\xamarin\\xamarin-udemy\\udemy-xamarin\\udemy-xamarin.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\xamarin\\xamarin-udemy\\udemy-xamarin\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Nicolás Carrasco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -77,7 +79,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

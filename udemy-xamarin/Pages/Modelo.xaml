@@ -4,18 +4,67 @@
              x:Class="udemy_xamarin.Pages.Modelo">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="toolbarRegistrar" IconImageSource="icon_add_xam.png" 
-                     Clicked="toolbarRegistrar_Clicked" Priority="1" />
+                     Clicked="toolbarRegistrar_Clicked" Priority="2" />
 
-        <ToolbarItem x:Name="toolbarVe" IconImageSource="icon_eye.png" 
-                     Clicked="toolbarVe_Clicked"  Priority="0"/>
+        <ToolbarItem x:Name="toolbarVer" IconImageSource="icon_eye.png" 
+                     Clicked="toolbarVer_Clicked"  Priority="1"/>
+
+        <ToolbarItem x:Name="toolbarEliminar" IconImageSource="ic_trash_xam.png" 
+                     Clicked="toolbarEliminar_Clicked"  Priority="0"/>
 
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Frame>
+            <StackLayout>
+                <Label Text="{Binding oModeloModel.titulo}" Style="{StaticResource estiloLabel}"/>
+                <Grid ColumnDefinitions="*,2*" RowDefinitions="Auto,Auto,Auto,Auto">
+                   
+                    <Label Text="Nombre" Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding oModeloModel.oModeloRecuperarCLS.nombre}"  Grid.Column="1" Grid.Row="1"/>
+                    <Label Text="Descripcion" Grid.Column="0" Grid.Row="2" VerticalTextAlignment="Center"/>
+                    <Editor Text="{Binding oModeloModel.oModeloRecuperarCLS.descripcion}"  Grid.Column="1" Grid.Row="2" HeightRequest="100"/>
+                    <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
+                        <Button x:Name="btnGuardar" Clicked="btnGuardar_Clicked" Text="Guardar"
+                                Style="{StaticResource colorAzul}"/>
+                        <Button x:Name="btnCancelar" Clicked="btnCancelar_Clicked" Text="Cancelar" 
+                                Style="{StaticResource colorRojo}"/>
+                    </StackLayout>
+                </Grid>
+
+                <ScrollView>
+                    <RefreshView x:Name="refreshModelo" IsRefreshing="{Binding oModeloModel.cargando}">
+                        <CollectionView SelectionMode="Single" 
+                                    SelectedItem="{Binding oModeloModel.oModeloCLS}"
+                                    ItemsSource="{Binding oModeloModel.listamodelo}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            
+                            
+                            <CollectionView.Header>
+                                <Grid ColumnDefinitions="*,2*,3*">
+                                    <Label Text="Id Modelo" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                                    <Label Text="Nombre" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                                    <Label Text="Descripcion" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                                </Grid>
+                            </CollectionView.Header>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="*,2*,3*">
+                                        <Label Text="{Binding iidmodelo}" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding nombre}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding descripcion}" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
+                 
+                </ScrollView>
+            </StackLayout>
+        </Frame>
     </ContentPage.Content>
 </ContentPage>
